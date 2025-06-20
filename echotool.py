@@ -113,7 +113,7 @@ if __name__ == "__main__":
     proto = args.protocol
 
     if args.receiver:
-        echo_reveiver(proto, host, port)
+        echo_receiver(proto, host, port)
     elif args.sender:
         echo_sender(proto, host, port)
     else:
