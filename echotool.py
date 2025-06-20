@@ -3,7 +3,7 @@ import argparse
 import textwrap
 
 # Create UDP or TCP echo server
-def echo_server(proto, host, port):
+def echo_receiver(proto, host, port):
     if proto.lower() == "udp":
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         server_socket.bind((host, port))
@@ -47,7 +47,7 @@ def echo_server(proto, host, port):
             server_socket.close()
 
 # Create UDP or TCP echo client
-def echo_client(proto, host, port):
+def echo_sender(proto, host, port):
     if proto.lower() == "udp":
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
@@ -113,9 +113,9 @@ if __name__ == "__main__":
     proto = args.protocol
 
     if args.receiver:
-        echo_server(proto, host, port)
+        echo_reveiver(proto, host, port)
     elif args.sender:
-        echo_client(proto, host, port)
+        echo_sender(proto, host, port)
     else:
         print("Error: You must specify either --receiver (-r) or --sender (-s).")
         exit(1)
